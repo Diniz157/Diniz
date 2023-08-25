@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pedido de Namoro</title>
+  <style>
+    #simButton {
+      display: inline-block;
+      margin-right: 20px;
+    }
+
+    #naoButton {
+      display: inline-block;
+    }
+
+    #naoButton.hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pedido de Namoro</h1>
+  <p>Quer namorar comigo?</p>
+  <button id="simButton">Sim</button>
+  <button id="naoButton" class="hidden">Não</button>
+  <p id="message"></p>
+
+  <script>
+    const simButton = document.getElementById('simButton');
+    const naoButton = document.getElementById('naoButton');
+    const message = document.getElementById('message');
+    const hearts = ['❤️', '💖', '💕', '💓', '💗'];
+
+    simButton.addEventListener('click', () => {
+      const randomHeart = hearts[Math.floor(Math.random() * hearts.length)];
+      message.textContent = `Vamos sair? ${randomHeart}`;
+      simButton.style.display = 'none';
+      naoButton.style.display = 'none';
+    });
+
+    naoButton.addEventListener('click', () => {
+      const newX = Math.random() * window.innerWidth;
+      const newY = Math.random() * window.innerHeight;
+      naoButton.style.position = 'absolute';
+      naoButton.style.left = `${newX}px`;
+      naoButton.style.top = `${newY}px`;
+    });
+  </script>
+</body>
+</html>
